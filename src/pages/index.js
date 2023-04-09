@@ -4,6 +4,7 @@ import Header from '@/components/Header'
 import Banner from '@/components/Banner'
 import SmallCard from '@/components/SmallCard'
 import MediumCard from '@/components/MediumCard'
+import LargeCard from '@/components/LargeCard'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -47,6 +48,13 @@ export default function Home({ exploreData, cardsData }) {
           ))}
           </div>
         </section>
+
+        <LargeCard
+        img="https://links.papareact.com/4cj"
+        title="The Greatest Ourdoors"
+        description="Wishlists curated by Airbnb."
+        buttonText="Get Inspired"
+        />
 
       </main>
     </div>
