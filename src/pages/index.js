@@ -3,10 +3,11 @@ import { Inter } from 'next/font/google'
 import Header from '@/components/Header'
 import Banner from '@/components/Banner'
 import SmallCard from '@/components/SmallCard'
+import MediumCard from '@/components/MediumCard'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({ exploreData }) {
+export default function Home({ exploreData, cardsData }) {
   return (
     <div className=''>
       <Head>
@@ -17,6 +18,7 @@ export default function Home({ exploreData }) {
       <Banner />
 
       <main className='max-w-7xl mx-auto px-8 sm:px-16'>
+
         <section className='pt-6'>
           <h2 className='text-4xl font-semibold pb-5'>Explore Nearby</h2>
 
@@ -32,13 +34,34 @@ export default function Home({ exploreData }) {
           ))}
           </div>
         </section>
+
+        <section>
+          <h2 className='text-4xl font-semibold py-8'>Live Anywhere</h2>
+          <div className='flex space-x-3 overflow-scroll scrollbar-hide p-3 -ml-3'>
+          {cardsData.map(({img, title}) => (
+            <MediumCard
+              key={img}
+              img={img}
+              title={title}
+            />
+          ))}
+          </div>
+        </section>
+
       </main>
     </div>
   );
 }
 
 export async function getStaticProps() {
+  // API-Endpoint for the small cards
   const exploreData = await fetch("https://www.jsonkeeper.com/b/4G1G").
+  then(
+    (res) => res.json()
+  );
+
+  // API-Endpoint for the medium cards
+  const cardsData = await fetch("https://www.jsonkeeper.com/b/VHHT").
   then(
     (res) => res.json()
   );
@@ -46,6 +69,7 @@ export async function getStaticProps() {
   return {
     props: {
       exploreData,
+      cardsData
     },
   };
 }
