@@ -9,18 +9,18 @@ function Mapbox() {
     height: "100%",
     longitude: 0.118092,
     latitude: 51.509865,
-    zoom: 11
+    zoom: 9
   })
 
   return (
     <div>
       <Map
-      mapStyle='mapbox://styles/mapsimon/clgbnis8j003r01n22l405lgg'
-      mapboxAccessToken={process.env.mapbox_key}
-      {...viewport}
-      >
-      </Map>
-
+        mapStyle='mapbox://styles/mapsimon/clgbnis8j003r01n22l405lgg'
+        mapboxAccessToken={process.env.mapbox_key}
+        style={{width: 600, height: "100%"}}
+        {...viewport}
+        onViewportChange={(nextViewport) => setViewport(nextViewport)}
+      ></Map>
     </div>
   )
 }

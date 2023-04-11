@@ -46,8 +46,7 @@ function Search({ searchResults }) {
           </div>
         </section>
 
-                {/* lg:min-w-[600px] */}
-        <section className="min-w-[600px] min-h-[600px]">
+        <section className="hidden xl:inline-flex xl:min-w-[40%] sticky top-[76px] h-[calc(100vh-76px)]">
           <Map />
         </section>
       </main>
